@@ -1,0 +1,65 @@
+This programming project is a demonstration of a programming
+ language interpreter that analyses the syntax and semantics of the input program. 
+ 
+The language parsed by this program is the faux language of Jay. 
+
+A Jay program (text file) is the input. 
+The program then scans through every character using TokenStream.
+Tokens are parsed according to the syntax of the Jay language using TokenStream class. 
+Once Tokens are parsed and identified using parse-tree like identification,
+ the semantics of the tokens are then analysed in the ConcreteSyntax class. 
+ (ex. Assignment --> Identifier = Expression ;) 
+Once classified in the ConcreteSyntax they are passed into the Program class that continues to build the tokens into semantic blocks. 
+(ex. Conditional = Expression test; Statement thenbranch, elsebranch)
+
+Once the entire program is parsed, the programs abstract syntax is printed.
+
+(ex.Abstract syntax of the JAY Program: 
+  Declarations: 
+    Declarations = {<n, int>, <fib0, int>, <fib1, int>, <temp, int>, <result, int>}
+  Block: 
+    Assignment: 
+      Variable: n
+      Value: 8
+    Skip: 
+    Assignment: 
+      Variable: fib0
+      Value: 0
+    Skip: 
+    Assignment: 
+      Variable: fib1
+      Value: 1
+    Skip: 
+    Conditional: 
+      Binary: 
+        Operator: <
+        Variable: n
+        Value: 0
+      Block: 
+        Assignment: 
+          Variable: temp
+          Variable: fib0
+        Skip: 
+        Assignment: 
+          Variable: fib0
+          Variable: fib1
+        Assignment: 
+          Variable: fib1
+          Binary: 
+            Operator: +
+            Variable: fib0
+            Variable: temp
+        Skip: 
+        Assignment: 
+          Variable: n
+          Binary: 
+            Operator: -
+            Variable: n
+            Value: 1
+        Skip: 
+    Assignment: 
+      Variable: result
+      Variable: fib0
+    Skip: 
+
+ )
